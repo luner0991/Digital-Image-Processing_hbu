@@ -1,0 +1,12 @@
+I=imread('line.jpg');
+subplot(2,2,1);imshow(I);title('Ô­Í¼Ïñ');
+G = rgb2gray(I);
+subplot(2,2,2);imshow(G);title('»Ò¶ÈÍ¼Ïñ');
+BW=edge(G,'sobel');
+subplot(2,2,3);imshow(BW,[]);title('sobel±ßÔµ¼ì²â');
+[H,theta,rho]=hough(BW);
+subplot(2,2,4);
+imshow(imadjust(H),[],'XData',theta,'YData',rho);
+xlabel('\theta');ylabel('\rho');
+axis on,axis normal,hold on;
+title('hough±ä»»¼ì²âÍ¼Ïñ');

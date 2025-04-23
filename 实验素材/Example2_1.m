@@ -1,0 +1,13 @@
+I = imread('football.jpg');
+subplot(2,2,1); imshow(I);
+J = rgb2gray(I);
+subplot(2,2,2); imshow(J);
+subplot(2,2,3); imhist(J);
+Ave = mean2(J);
+SD = std2(J);
+s = size(J);
+all_white = 255*ones(s(1),s(2));
+all_whit_uint8 = uint8(all_white);
+K = imsubtract(all_whit_uint8, J);
+subplot(2,2,4); imshow(K);
+imwrite(K, 'football_inverse.jpg');
